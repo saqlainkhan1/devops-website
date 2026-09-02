@@ -18,9 +18,10 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                    docker rm -f devops-nginx || true
+                    docker rm -f nginx-website || true
+
                     docker run -d \
-                        --name devops-nginx \
+                        --name nginx-website \
                         -p 8081:80 \
                         devops-website:latest
                 '''
